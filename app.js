@@ -5,9 +5,10 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/user');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/user');
 const gameRouter = require("./routes/game")
+const nftRouter = require("./routes/nft")
 
 var app = express();
 dotenv.config();
@@ -25,7 +26,8 @@ mongoose.connect(mongo_uri, function(err) {
   }
 });
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use("/game",gameRouter)
+app.use("/nft",nftRouter)
 
 module.exports = app;
