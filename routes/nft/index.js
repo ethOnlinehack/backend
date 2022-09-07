@@ -8,5 +8,6 @@ router.post('/create', create);
 router.post("/update/:nftId",update)
 router.get("/get-one/:nftId",getOne)
 router.get("/get-all/:gameId",getAll)
+router.delete("/delete/:nftId")
 
 module.exports = router;

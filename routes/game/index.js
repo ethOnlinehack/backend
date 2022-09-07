@@ -6,7 +6,7 @@ const getOne = require("./get-one")
 
 router.post('/create', create);
 router.get("/get-all",getAll)
-router.post("/update/:gameId",update)
+router.put("/update/:gameId",update)
 router.get("/get-one/:gameId",getOne)
-
+router.delete("/delete/:gameId")
 module.exports = router;
