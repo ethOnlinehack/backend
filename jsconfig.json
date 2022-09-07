@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$libs": ["src/libs"],
+      "$libs/*": ["src/libs/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
