@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Game = new mongoose.Schema({
   name:{type:String,required:true},
-  description:{type:String,required:true},
+  description:String,
   ipfs_uri: { type: String, required: true, unique: true },
   creator: { type: mongoose.Schema.Types.ObjectId, ref:"User",required: true },
   created_at:{ type: Date, default: Date.now },
