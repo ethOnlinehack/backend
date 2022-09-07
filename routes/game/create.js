@@ -3,7 +3,7 @@ const Game = require("../../models/Game");
 module.exports = async function (req, res) {
   console.log("Creating game with body ", req.body);
   const body = req.body;
-  const user = req.body.user;
+  const userId = "6314a47e298ae34fd5ce7c29";
   //sami generates a smartcontract and retrieves it s address here
   const smartcontractAddress = "0x...";
   const accessToken = "ss";
@@ -13,7 +13,7 @@ module.exports = async function (req, res) {
       name: body.name,
       description: body.description,
       ipfs_uri: body.ipfs_uri,
-      creator: user.id,
+      creator: userId,
       smartcontract_address: smartcontractAddress,
       access_token: accessToken,
     });

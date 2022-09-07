@@ -11,8 +11,9 @@ router.get("/", function (req, res) {
 //   res.send({ title: x.title});
 // });
 
-router.get("/test", isAuthenticated, function (req, res) {
-  res.send({ title: "welcommeeee" });
+router.get("/test",isAuthenticated, function (req, res) {
+  console.log(req.user)
+  res.status(200).send({ title: "welcommeeee" });
 });
 
 module.exports = router;
