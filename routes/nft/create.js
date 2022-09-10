@@ -1,8 +1,9 @@
-const Nft = require("../../models/Game");
+const Nft = require("../../models/Nft");
 
 module.exports = async function (req, res) {
   console.log("Creating Nft with body ", req.body);
   const body = req.body;
+  // sami uploads ipfs 
 
   try {
     const newNft = await Nft.create({
@@ -10,10 +11,11 @@ module.exports = async function (req, res) {
         description:body.description,
         ipfs_uri: body.ipfs_uri,
         ipfs_card_uri: body.ipfs_card_uri,
-        gameId:body.gameId,
+        game_id: body.game_id,
         smartcontract_address:body.smartcontract_address,
         attributes:body.attributes,
     });
+
     console.log("Game Nft  ", newNft);
 
     res.status(200).send(newNft);

@@ -1,4 +1,4 @@
-const Nft = require("../../models/Game");
+const Nft = require("../../models/Nft");
 
 module.exports = async function (req, res) {
   console.log("Retrieving all nfts by game id ", req.params.gameId);

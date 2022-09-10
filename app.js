@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const gameRouter = require("./routes/game")
 const nftRouter = require("./routes/nft")
+const apiRouter = require("./routes/api/v1")
 
 var app = express();
 dotenv.config();
@@ -29,5 +30,6 @@ app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use("/game",gameRouter)
 app.use("/nft",nftRouter)
+app.use("/api",apiRouter)
 
 module.exports = app;
