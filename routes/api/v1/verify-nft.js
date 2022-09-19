@@ -20,5 +20,5 @@ module.exports = async function (req, res) {
 
   if (!gamer) return res.status(500).send("Gamer not found.");
 
-  return res.status(200).json(gamer.quantity?.[req.params.nftId] || 0);
+  return res.status(200).send(gamer.quantity?.[req.params.nftId] || 0);
 };
