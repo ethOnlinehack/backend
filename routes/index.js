@@ -1,5 +1,4 @@
 var express = require("express");
-const Gamer = require("../models/Gamer");
 var router = express.Router();
 const isAuthenticated = require("../middleware/isAuthenticated");
 /* GET home page. */
