@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res) {
   const { email, password } = req.body;
-  console.log(req.headers)
   User.findOne({ email }, function (err, user) {
     if (err) {
       console.error(err);
@@ -30,8 +29,7 @@ module.exports = function (req, res) {
           const token = jwt.sign(payload, process.env.AUTH_SECRET, {
             expiresIn: "48h",
           });
-          console.log(token)
-          res.cookie("access-token", token, { httpOnly: true }).sendStatus(200);
+          res.cookie("access-token", token, { httpOnly: true }).status(200).json(payload);
         }
       });
     }
