@@ -7,12 +7,11 @@ module.exports = async function (req, res) {
 
   try {
     const newNft = await Nft.create({
-        name:body.name,
-        description:body.description,
+        name:body.nft_name,
+        description:body.nft_description,
         ipfs_uri: body.ipfs_uri,
         ipfs_card_uri: body.ipfs_card_uri,
         game_id: body.game_id,
-        smartcontract_address:body.smartcontract_address,
         attributes:body.attributes,
     });
 

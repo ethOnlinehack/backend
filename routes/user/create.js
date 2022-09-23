@@ -1,12 +1,13 @@
 const User = require("../../models/User")
 
-module.exports =  function(req, res) {
-    const { email, password } = req.body;
-    const userExists = User.findOne({email:email})
+module.exports =  async  function(req, res) {
+    const { email, password, first_name, last_name } = req.body;
+    const userExists =  await User.findOne({email:email})
+    console.log(userExists)
     if(userExists)
       return res.status(500).send("user already exists")
       
-    const user = new User({ email, password });
+    const user = new User({ email, password, first_name, last_name });
     user.save(function(err) {
       if (err) {
         res.status(500)
