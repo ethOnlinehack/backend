@@ -1,13 +1,14 @@
 var express = require("express");
-const Gamer = require("../models/Gamer");
 var router = express.Router();
 const isAuthenticated = require("../middleware/isAuthenticated");
 /* GET home page. */
 router.get("/", async function (req, res) {
-
-  const gamer = await Gamer.findById("631b07c25f18b4d29345b2f1")
-  console.log(JSON.parse(JSON.stringify(gamer.nfts)))
-  res.json(gamer);
+  console.log(req.headers)
+  res.status(200).send("okkkk");
+});
+router.get("/test", isAuthenticated, async function (req, res) {
+console.log(req.user)
+  res.status(200).json({message:"helloxx"});
 });
 // router.post("/",function(req, res, next) {
 //   const x = req.body

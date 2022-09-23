@@ -3,8 +3,9 @@ const Gamer = require("../../../models/Gamer");
 
 module.exports = async function (req, res) {
   console.log("verify quantity of nft for gamer ");
-
-  const game = await Game.findOne({ access_token: req.params.gameAccessToken });
+  if(!req.headers.access_token)
+    return res.status(403).send("you do not have access")
+  const game = await Game.findOne({ access_token: req.headers.access_token });
   if (!game)
     return res.status(404).json({
       code: 404,

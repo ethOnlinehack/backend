@@ -5,10 +5,10 @@ const getAllNfts = require("./get-all-nfts");
 const getAllNftsByGamer = require("./get-all-nfts-by-gamer");
 
 
-router.post('/v1/:gameAccessToken/gamer-sign-in', gamerSignIn);
-router.get('/v1/:gameAccessToken/verify/:walletAddress/:nftId', gamerVerifyNft);
-router.get('/v1/:gameAccessToken/get-all-nfts', getAllNfts);
-router.get('/v1/:gameAccessToken/get-all-nfts/:walletAddress', getAllNftsByGamer);
+router.post('/v1/gamer-sign-in', gamerSignIn);
+router.get('/v1/verify/:walletAddress/:nftId', gamerVerifyNft);
+router.get('/v1/get-all-nfts', getAllNfts);
+router.get('/v1/get-all-nfts/:walletAddress', getAllNftsByGamer);
 
 
 module.exports = router;

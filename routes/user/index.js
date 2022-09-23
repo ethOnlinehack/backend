@@ -9,6 +9,6 @@ const checkToken = require("./check-token")
 router.post('/register', create);
 router.post('/login', login);
 router.post("/logout",isAuthenticated,logout)
-router.get('/check-token', isAuthenticated,checkToken );
+router.post('/check-token', isAuthenticated,checkToken );
 
 module.exports = router;
