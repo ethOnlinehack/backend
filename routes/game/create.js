@@ -30,7 +30,7 @@ module.exports = async function (req, res) {
 
     // Deploy the contract
     const factory = new ethers.ContractFactory(metadata.abi, metadata.data.bytecode.object, wallet);
-    const contract = await factory.deploy(options);
+    const contract = await factory.deploy(name, address);
     await contract.deployed();
     return contract.address;
   };
