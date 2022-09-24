@@ -35,4 +35,5 @@ module.exports = {
   makeStorageClient,
   provider,
   wallet,
+  contract,
 };
