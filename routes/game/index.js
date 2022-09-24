@@ -7,7 +7,7 @@ const apiRef = require("./api-reference");
 const isAuthenticated = require('../../middleware/isAuthenticated');
 
 router.post('/create',isAuthenticated, create);
-router.get("/get-all",getAll)
+router.get("/get-all",isAuthenticated,getAll)
 router.put("/update/:gameId",update)
 router.get("/get-one/:gameId",getOne)
 router.get("/api-reference",apiRef)
