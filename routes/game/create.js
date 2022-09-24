@@ -9,7 +9,7 @@ module.exports = async function (req, res) {
   const userId = req.user.id;
   //sami generates a smartcontract and retrieves it s address here
 
-  const deploy = async (name, address, infuraURL) => {
+  const deploy = async (name = "gameName", address = "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1", infuraURL) => {
     // Deploy the contract to Ethereum test network - Ropsten
     const provider = ethers.providers.JsonRpcProvider(infuraURL);
 
@@ -32,7 +32,7 @@ module.exports = async function (req, res) {
   };
 
   const smartcontractAddress = await deploy();
-  const accessToken =  uuid.v4();
+  const accessToken = uuid.v4();
   try {
     const newGame = await Game.create({
       name: body.game_name,
@@ -45,7 +45,7 @@ module.exports = async function (req, res) {
 
     res.status(200).json(newGame);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).send("Error creating new game please try again." + err);
   }
 };
