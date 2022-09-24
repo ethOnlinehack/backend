@@ -1,7 +1,7 @@
-import { Web3Storage } from "web3.storage";
-import { File } from "web3.storage";
+const Web3Storage = require("web3.storage").Web3Storage;
+const File = require("web3.storage").File;
 const newGameItemsJson = require("./NewGameItems.json");
-
+const ethers = require("ethers");
 function getAccessToken() {
   return process.env.WEB3STORAGE_TOKEN;
 }
@@ -26,9 +26,13 @@ async function storeFiles(files) {
 const provider = new ethers.providers.JsonRpcProvider(
   "https://polygon-mumbai.infura.io/v3/16e68b2896934870bb1f6c768bfba400"
 );
-const privateKey = process.env.PRIVATE_KEY;
+const privateKey = "33e9ba06bdbf3c49faf9799e306ea2ab0015dbd93c53a3d041ae712d91e2bae0";
 const wallet = new ethers.Wallet(privateKey, provider);
-const contract = new ethers.Contract("0x03ECddB0990Ec678642E6D0C1fdbBA990dFEc374", newGameItemsJson.abi, wallet);
+const contract = new ethers.Contract(
+  "0x03ECddB0990Ec678642E6D0C1fdbBA990dFEc374",
+  newGameItemsJson.abi,
+  wallet
+);
 module.exports = {
   storeFiles,
   makeFileObjects,
