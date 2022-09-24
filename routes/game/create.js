@@ -9,7 +9,11 @@ module.exports = async function (req, res) {
   const userId = req.user.id;
   //sami generates a smartcontract and retrieves it s address here
 
-  const deploy = async (name = "gameName", address = "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1", infuraURL) => {
+  const deploy = async (
+    name = "gameName",
+    address = "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1",
+    infuraURL = "https://polygon-mumbai.infura.io/v3/16e68b2896934870bb1f6c768bfba400"
+  ) => {
     // Deploy the contract to Ethereum test network - Ropsten
     const provider = ethers.providers.JsonRpcProvider(infuraURL);
 
