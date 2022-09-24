@@ -28,11 +28,17 @@ const provider = new ethers.providers.JsonRpcProvider(
 );
 const privateKey = "33e9ba06bdbf3c49faf9799e306ea2ab0015dbd93c53a3d041ae712d91e2bae0";
 const wallet = new ethers.Wallet(privateKey, provider);
-const contract = new ethers.Contract(
-  "0x03ECddB0990Ec678642E6D0C1fdbBA990dFEc374",
-  newGameItemsJson.abi,
-  wallet
-);
+const contract = new ethers.Contract("0x03ECddB0990Ec678642E6D0C1fdbBA990dFEc374", newGameItemsJson.abi, wallet);
+const mintToAddress = async (to, id, amount, contractAddress) => {
+  const Contract = contract.attach(contractAddress);
+  const response = await Contract.mint(to, id, amount, "");
+  return response;
+};
+const transfer = async (from, to, id, amount, contractAddress) => {
+  const Contract = contract.attach(contractAddress);
+  const response = await Contract.safeTransferFrom(from, to, id, amount, "");
+  return response;
+};
 module.exports = {
   storeFiles,
   makeFileObjects,
@@ -40,4 +46,6 @@ module.exports = {
   provider,
   wallet,
   contract,
+  transfer,
+  mintToAddress,
 };
