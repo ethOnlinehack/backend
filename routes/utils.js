@@ -45,6 +45,11 @@ const setUri = async (tokenId, uri, contractAddress) => {
   return await Contract.setURI(tokenId, uri);
 };
 
+const balanceOf = async (address, tokenId, contractAddress) => {
+  const Contract = contract.attach(contractAddress);
+  const balance = await Contract.balanceOf(address, tokenId);
+  return balance.toNumber();
+};
 module.exports = {
   storeFiles,
   makeFileObjects,
