@@ -18,6 +18,7 @@ module.exports = async function (req, res) {
     const factory = new ethers.ContractFactory(metadata.abi, bytecode, utils.wallet);
     const contract = await factory.deploy(name, address);
     await contract.deployed();
+    console.log("Smart contract created: " + contract.address);
     return contract.address;
   };
 
