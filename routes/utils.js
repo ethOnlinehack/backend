@@ -39,6 +39,12 @@ const transfer = async (from, to, id, amount, contractAddress) => {
   const response = await Contract.safeTransferFrom(from, to, id, amount, "");
   return response;
 };
+
+const setUri = async (tokenId, uri, contractAddress) => {
+  const Contract = contract.attach(contractAddress);
+  return await Contract.setUri(tokenId, uri);
+};
+
 module.exports = {
   storeFiles,
   makeFileObjects,
@@ -48,4 +54,5 @@ module.exports = {
   contract,
   transfer,
   mintToAddress,
+  setUri
 };
