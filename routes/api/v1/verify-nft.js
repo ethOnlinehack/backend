@@ -1,3 +1,4 @@
+const utils = require("../../utils");
 const Game = require("../../../models/Game");
 const Gamer = require("../../../models/Gamer");
 
@@ -19,6 +20,10 @@ module.exports = async function (req, res) {
   }).populate("nfts");
 
   if (!gamer) return res.status(500).send("Gamer not found.");
-
-  return res.status(200).send(gamer.quantity?.[req.params.nftId] || 0);
+  const balance = await utils.balanceOf(
+    req.params.walletAddress,
+    req.params.nftId.toString(),
+    game.smartcontract_address
+  );
+  return res.status(200).send(balance.toString());
 };

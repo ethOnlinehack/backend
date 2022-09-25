@@ -13,7 +13,7 @@ module.exports = async function (req, res) {
       code: 404,
       message: "invalid access token",
     });
-
+try{
   var transaction = await utils.mintToAddress(
     walletAddress,
     tokenId,
@@ -23,4 +23,9 @@ module.exports = async function (req, res) {
   const receipt = await transaction.wait()
 
   return res.status(200).send(receipt.transactionHash);
+}catch(err){
+console.log(err)
+res.status(500).send("error")
+}
+
 };

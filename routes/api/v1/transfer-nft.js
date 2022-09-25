@@ -14,15 +14,20 @@ if (!game)
     code: 404,
     message: "invalid access token",
   });
+try{
+  var transaction = await utils.transfer(
+    walletAddress,
+    "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1",
+    tokenId,
+    1,
+    game.smartcontract_address
+  );
+  const receipt = await transaction.wait()
+  
+  return res.status(200).send(receipt.transactionHash);
+}catch(err){
+  console.log(err)
+  return res.status(500).send("error")
+}
 
-var transaction = await utils.transfer(
-  walletAddress,
-  "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1",
-  tokenId,
-  1,
-  game.smartcontract_address
-);
-const receipt = await transaction.wait()
-
-return res.status(200).send(receipt.transactionHash);
 };

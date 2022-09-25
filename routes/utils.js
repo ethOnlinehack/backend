@@ -48,6 +48,7 @@ const setUri = async (tokenId, uri, contractAddress) => {
 const balanceOf = async (address, tokenId, contractAddress) => {
   const Contract = contract.attach(contractAddress);
   const balance = await Contract.balanceOf(address, tokenId);
+  console.log(balance.toNumber())
   return balance.toNumber();
 };
 module.exports = {
@@ -60,4 +61,5 @@ module.exports = {
   transfer,
   mintToAddress,
   setUri,
+  balanceOf
 };
