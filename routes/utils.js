@@ -42,7 +42,7 @@ const transfer = async (from, to, id, amount, contractAddress) => {
 
 const setUri = async (tokenId, uri, contractAddress) => {
   const Contract = contract.attach(contractAddress);
-  return await Contract.setUri(tokenId, uri);
+  return await Contract.setURI(tokenId, uri);
 };
 
 module.exports = {
@@ -54,5 +54,5 @@ module.exports = {
   contract,
   transfer,
   mintToAddress,
-  setUri
+  setUri,
 };
