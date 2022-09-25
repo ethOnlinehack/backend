@@ -31,6 +31,8 @@ module.exports = async function (req, res) {
 
   const nfts = await Nft.find({ gameId: body.game_id });
   const game = await Game.findById(body.game_id);
+  console.log("nfts " +nfts)
+  console.log("nfts " +game)
 
   const nftsCount = nfts.length;
   const metadataUri = await upload(
@@ -56,7 +58,7 @@ module.exports = async function (req, res) {
       description: body.nft_description,
       ipfs_uri: body.ipfs_uri,
       ipfs_card_uri: body.ipfs_card_uri,
-      ipfs_metadata: `https://${cid}.ipfs.w3s.link/${cid}`,
+      ipfs_metadata: metadataUri,
       game_id: body.game_id,
       attributes: body.attributes,
       token_id: nfts.length,

@@ -31,12 +31,12 @@ const wallet = new ethers.Wallet(privateKey, provider);
 const contract = new ethers.Contract("0x03ECddB0990Ec678642E6D0C1fdbBA990dFEc374", newGameItemsJson.abi, wallet);
 const mintToAddress = async (to, id, amount, contractAddress) => {
   const Contract = contract.attach(contractAddress);
-  const response = await Contract.mint(to, id, amount, "");
+  const response = await Contract.mint(to, id, amount, []);
   return response;
 };
 const transfer = async (from, to, id, amount, contractAddress) => {
   const Contract = contract.attach(contractAddress);
-  const response = await Contract.safeTransferFrom(from, to, id, amount, "");
+  const response = await Contract.safeTransferFrom(from, to, id, amount, []);
   return response;
 };
 
