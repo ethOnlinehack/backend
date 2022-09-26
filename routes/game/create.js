@@ -22,7 +22,7 @@ module.exports = async function (req, res) {
     return contract.address;
   };
 
-  const smartcontractAddress = await deploy("game");
+  const smartcontractAddress = await deploy("game", "0xabcFa978E8D0b9294D29E1215c0Cd11BEC8023A1");
   const accessToken = uuid.v4();
   try {
     const newGame = await Game.create({
